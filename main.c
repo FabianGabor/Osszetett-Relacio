@@ -45,23 +45,23 @@ void print (Elempar *h, int n)
     printf("(%d, %d) } \n", h[n-1].p, h[n-1].r);
 }
 
-void printdata (Data *d)
+void printdata (Data d)
 {
     printf("{ ");
-    for (int i=0; i<d->n-1; i++)
-        printf("(%d, %d), ", d[i].c->p, d[i].c->r);
-    printf("(%d, %d) } \n", d[d->n-1].c->p, d[d->n-1].c->r);
+    for (int i=0; i<d.n-1; i++)
+        printf("(%d, %d), ", d.c[i].p, d.c[i].r);
+    printf("(%d, %d) } \n", d.c[d.n].p, d.c[d.n].r);
 }
 
-Data *natural_join (Elempar *a, Elempar *b, int n)
+Data natural_join (Elempar *a, Elempar *b, int n)
 {
     //Elempar *c;
     //c = (Elempar*) malloc(n*n * sizeof(Elempar));
     //int k = 0;
 
-    Data *data;
-    data = (Data*) malloc(n*n * sizeof(Data));
-    data->n = 0;
+    Data data;
+    //data = (Data*) malloc(n*n * sizeof(Data));
+    data.n = 0;
 
     for (int i=0; i<n; i++)
         for (int j=0; j<n; j++)
@@ -73,12 +73,12 @@ Data *natural_join (Elempar *a, Elempar *b, int n)
                 k++;
                 */
 
-                data->c[n].p = b[i].p;
-                data->c[n].r = a[j].r;
+                data.c[n].p = b[i].p;
+                data.c[n].r = a[j].r;
 
-                printf("(%d,%d) o (%d,%d) -> (%d,%d)\n", b[i].p, b[i].r, a[j].p, a[j].r, data->c[n].p, data->c[n].r );
+                printf("(%d,%d) o (%d,%d) -> (%d,%d)\n", b[i].p, b[i].r, a[j].p, a[j].r, data.c[n].p, data.c[n].r );
 
-                data->n++;
+                data.n++;
             }
 
     return data;
@@ -87,8 +87,9 @@ Data *natural_join (Elempar *a, Elempar *b, int n)
 int main()
 {
     int n = 5;
-    Data *c;
-    c = (Data*) malloc(n*n * sizeof(Data));;
+
+    Data c;
+    //c = (Data*) malloc(n*n * sizeof(Data));
 
     Elempar *a[n], *b[n];
     *a = createRandom(n);
@@ -97,12 +98,12 @@ int main()
     print(*a,n);
     print(*b,n);
 
-    *c = *natural_join(*a,*b,n);
+    c = natural_join(*a,*b,n);
     //printdata(c);
 
     free(*a);
     free(*b);
-    free(c);
+    //free(c);
 
     return 0;
 }
