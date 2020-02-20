@@ -15,11 +15,18 @@ Elempar *create (int n)
     Elempar *a;
     a = (Elempar*) malloc(n * sizeof(Elempar));
 
-    // ellenorizni kell, hogy ne legyenek azonos elemek
-    for (int j=0; j<n; j++)
+    for (int i=0; i<n; i++)
     {
-        a[j].p = randomgen(1,9);
-        a[j].r = randomgen(1,9);
+        a[i].p = randomgen(1,9);
+        a[i].r = randomgen(1,9);
+
+        // ellenorizni kell, hogy ne legyenek azonos elemek
+        for (int j=0; j<i; j++)
+            while ( (a[i].p == a[j].p) && (a[i].r == a[j].r) )
+            {
+                a[i].p = randomgen(1,9);
+                a[i].r = randomgen(1,9);
+            }
     }
 
     return a;
