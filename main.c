@@ -15,6 +15,7 @@ Elempar *create (int n)
     Elempar *a;
     a = (Elempar*) malloc(n * sizeof(Elempar));
 
+<<<<<<< HEAD
     for (int i=0; i<n; i++)
     {
         a[i].p = randomgen(1,9);
@@ -27,6 +28,13 @@ Elempar *create (int n)
                 a[i].p = randomgen(1,9);
                 a[i].r = randomgen(1,9);
             }
+=======
+    // ellenorizni kell, hogy ne legyenek azonos elemek
+    for (int j=0; j<n; j++)
+    {
+        a[j].p = randomgen(1,9);
+        a[j].r = randomgen(1,9);
+>>>>>>> master
     }
 
     return a;
