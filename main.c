@@ -10,7 +10,7 @@ int randomgen (int also, int felso)
     return (rand() % (felso - also + 1)) + also;
 }
 
-Elempar *create (int n)
+Elempar *createrandom (int n)
 {
     Elempar *a;
     a = (Elempar*) malloc(n * sizeof(Elempar));
@@ -40,12 +40,14 @@ void print (Elempar *h, int n)
     printf("(%d, %d) } \n", h[n-1].p, h[n-1].r);
 }
 
+
+
 int main()
 {
     int n = 5;
     Elempar *a[n], *b[n];
-    *a = create(n);
-    *b = create(n);
+    *a = createrandom(n);
+    *b = createrandom(n);
 
     print(*a,n);
     print(*b,n);
