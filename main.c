@@ -40,17 +40,36 @@ void print (Elempar *h, int n)
     printf("(%d, %d) } \n", h[n-1].p, h[n-1].r);
 }
 
+Elempar *natural_join (Elempar *a, Elempar *b, int n)
+{
+    Elempar *c;
+    c = (Elempar*) malloc(n*n * sizeof(Elempar));
+    int k = 0;
 
+    for (int i=0; i<n; i++)
+        for (int j=0; j<n; j++)
+            if (b[i].r == a[j].p)
+            {
+                c[k].p = b[i].p;
+                c[k].r = a[i].r;
+                k++;
+            }
+
+    return c;
+}
 
 int main()
 {
     int n = 5;
-    Elempar *a[n], *b[n];
+    Elempar *a[n], *b[n], *c[n*n];
     *a = createrandom(n);
     *b = createrandom(n);
+    *c = natural_join(*a,*b,n);
+
 
     print(*a,n);
     print(*b,n);
+    print(*c,n);
 
     return 0;
 }
