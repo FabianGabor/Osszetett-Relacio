@@ -76,7 +76,7 @@ Data *natural_join (Elempar *a, Elempar *b, int n)
                 data->c[n].p = b[i].p;
                 data->c[n].r = a[j].r;
 
-                printf("(%d,%d) o (%d,%d) -> (%d,%d)\n", b[i].p, b[i].r, a[j].p, a[j].r, b[i].p, a[j].r );
+                printf("(%d,%d) o (%d,%d) -> (%d,%d)\n", b[i].p, b[i].r, a[j].p, a[j].r, data->c[n].p, data->c[n].r );
 
                 data->n++;
             }
