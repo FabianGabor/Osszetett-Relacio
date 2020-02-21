@@ -74,6 +74,25 @@ Data *natural_join (Elempar *a, Elempar *b, int n)
     return data;
 }
 
+Data *remove_dupes(Data *data)
+{
+    for (int i=0; i<data->n; i++)
+        for (int j=i+1; j<data->n; j++)
+            if ( (data->c[i].p == data->c[j].p) && (data->c[i].r == data->c[j].r) )
+            {
+                data->n--;
+
+                for (int k=j; k<data->n; k++)
+                {
+                    data->c[k].p = data->c[k+1].p;
+                    data->c[k].r = data->c[k+1].r;
+                }
+                j--;
+            }
+
+    return data;
+}
+
 int main()
 {
     int n = 8;
@@ -88,8 +107,8 @@ int main()
     print(*b,n);
 
     c = natural_join(*a, *b, n);
+    c = remove_dupes(c);
     printdata(c);
-
 
     free(*a);
     free(*b);
