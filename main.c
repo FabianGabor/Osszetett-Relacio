@@ -47,15 +47,15 @@ void print (Elempar *h, int n)
 
 void printdata (Data *d)
 {
-    printf("a o b = { ");
+    printf("{ ");
     for (int i=0; i<d->n-1; i++)
         printf("(%d, %d), ", d->c[i].p, d->c[i].r);
-    printf("(%d, %d) } \n", d->c[d->n-1].p, d->c[d->n-1].r);
+    printf("(%d, %d) } \n\n", d->c[d->n-1].p, d->c[d->n-1].r);
 }
 
 Data *natural_join (Elempar *a, Elempar *b, int n)
 {
-    Data *data = (Data*) malloc(n*n * sizeof(Data));;
+    Data *data = (Data*) malloc(n*n * sizeof(Data));
     data->n = 0;
 
     printf("\n");
@@ -71,6 +71,19 @@ Data *natural_join (Elempar *a, Elempar *b, int n)
                 data->n++;
             }
     printf("\n");
+
+    return data;
+}
+
+Elempar *transpose (Elempar *a, int n)
+{
+    Elempar *data = (Elempar*) malloc(n * sizeof(Elempar));
+
+    for (int i=0; i<n; i++)
+    {
+        data[i].p = a[i].r;
+        data[i].r = a[i].p;
+    }
 
     return data;
 }
@@ -99,6 +112,7 @@ int main()
     int n = 8;
 
     Data *c = malloc(n*n * sizeof(Data));
+    Elempar *inv = malloc(n * sizeof(Elempar));
 
     Elempar *a[n], *b[n];
     *a = createRandom(n);
@@ -107,7 +121,17 @@ int main()
     print(*a,n);
     print(*b,n);
 
+    printf("a o b = ");
     c = natural_join(*a, *b, n);
+    c = remove_dupes(c);
+    printdata(c);
+
+    printf("b ^ -1 = ");
+    inv = transpose(*b, n);
+    print(inv,n);
+
+    printf("a ^ 2 = ");
+    c = natural_join(*a, *a, n);
     c = remove_dupes(c);
     printdata(c);
 
