@@ -1,9 +1,9 @@
 # Összetett reláció
 
-### Fábián Gábor
+Fábián Gábor
 - Nyíregyházi Egyetem - Matematika és Informatika Intézet
   - Diszkrét matematika, 1. év
-    - Oktató: 
+    - Oktató: Eichinger László
 
 ```
 gcc main.c -o osszetett-relacio
