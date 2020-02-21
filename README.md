@@ -1,4 +1,4 @@
-#Osszetett-relacio
+# Osszetett-relacio
 
 ```
 gcc main.c -o osszetett-relacio
