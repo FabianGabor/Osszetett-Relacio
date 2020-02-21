@@ -120,15 +120,18 @@ int main()
 
     print(*a,n);
     print(*b,n);
+    printf("\n");
 
     printf("a o b = ");
     c = natural_join(*a, *b, n);
     c = remove_dupes(c);
     printdata(c);
+    printf("\n");
 
     printf("b ^ -1 = ");
     inv = transpose(*b, n);
     print(inv,n);
+    printf("\n");
 
     printf("a ^ 2 = ");
     c = natural_join(*a, *a, n);
