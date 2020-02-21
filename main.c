@@ -59,7 +59,6 @@ Data *natural_join (Elempar *a, Elempar *b, int n)
     data->n = 0;
 
     printf("\n");
-
     for (int i=0; i<n; i++)
         for (int j=0; j<n; j++)
             if (b[i].r == a[j].p)
