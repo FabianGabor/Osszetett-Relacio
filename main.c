@@ -47,7 +47,7 @@ void print (Elempar *h, int n)
 
 void printdata (Data *d)
 {
-    printf("a o b = c = { ");
+    printf("a o b = { ");
     for (int i=0; i<d->n-1; i++)
         printf("(%d, %d), ", d->c[i].p, d->c[i].r);
     printf("(%d, %d) } \n", d->c[d->n-1].p, d->c[d->n-1].r);
@@ -57,6 +57,8 @@ Data *natural_join (Elempar *a, Elempar *b, int n)
 {
     Data *data = (Data*) malloc(n*n * sizeof(Data));;
     data->n = 0;
+
+    printf("\n");
 
     for (int i=0; i<n; i++)
         for (int j=0; j<n; j++)
